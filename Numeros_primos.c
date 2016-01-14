@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void Primo(int x);
-void PrimoRef(int *x, int *cont);
+void PrimoRef(int x, int *cont);
 void Escolha(int op);
 void Escolha2(int opt);
 int menu(void);
@@ -29,21 +29,21 @@ int menu(void){
 }
 
 void Escolha(int op){	
-    int x, y, c, opt, cont, *primo;
+    int x, y, c, opt, cont=0, *primo;
 	switch(op){
 	case 1:
-	    printf("\nDigite um numero inteiro: "); scanf("%d",&x);
+	    printf("\nDigite um numero natural: "); scanf("%d",&x);
 	    Primo(x);
 	    printf("\nDeseja fazer outra operacao? (s=1/n=0): "); scanf("%d",&opt);
 	    Escolha2(opt);
 	    break;
 	case 2:
-		printf("\nDigite um numero inteiro: "); scanf("%d",&x);
-		if (x==1){
+		printf("\nDigite um numero natural: "); scanf("%d",&x);
+		if ((x==1) || (x % 2 ==0)){
 		system("cls");
 		printf("O numero %d nao e primo. \n\n",x);
 		}else{
-		PrimoRef(&x,&cont);
+		PrimoRef(x,&cont);
 		if (cont >= 2)
 	       printf("O numero %d nao e primo. \n\n",x);
 	    else
@@ -109,24 +109,20 @@ void ContaPrimo(int *primo, int x, int *c){
     *c=z;
 }
 
-void PrimoRef(int *x, int *cont){
+void PrimoRef(int x, int *cont){
 	system("cls");
-	int y;
-	*cont=0;
-	if (*x % 2 == 0)
-	   *cont=2;
-	else{
-		for (y=1;y<=(*x/2);y++){
-     		if (*x % y == 0)
-	    	*cont++;
+	int y, c=0;
+	for (y=1;y<=(x/2);y++){
+     	if (x % y == 0)
+	    c++;
 	}
-}
+	*cont=c;
 }
 
 void Primo(int x){
 	int cont=0, y, opt;
 	system("cls");
-	if (x % 2 == 0)
+	if ((x % 2 == 0) || (x==1))
 		printf("O numero %d nao e primo. \n\n",x);
 	else{
     	for (y=1;y<=(x/2);y++){
@@ -135,11 +131,8 @@ void Primo(int x){
 	    }
 	    if (cont >= 2)
 	       printf("O numero %d nao e primo. \n\n",x);
-	    else{
-	    	if (x==1)
-	    	  printf("O numero %d nao e primo. \n\n",x);
-	        else
-	          printf("O numero %d e primo. \n\n",x);
-	    }  
+	    else
+	       printf("O numero %d e primo. \n\n",x);
+	    
     }
 }
