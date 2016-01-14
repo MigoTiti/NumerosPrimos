@@ -29,7 +29,7 @@ int menu(void){
 }
 
 void Escolha(int op){	
-    int x, y, c, opt, cont, primo[1000];
+    int x, y, c, opt, cont, *primo;
 	switch(op){
 	case 1:
 	    printf("\nDigite um numero inteiro: "); scanf("%d",&x);
@@ -55,13 +55,15 @@ void Escolha(int op){
 	case 3:
 		printf("\nDigite um numero natural: "); scanf("%d",&x);
 		system("cls");
+		primo=(int *) malloc(x * (sizeof(int)));
 		x--;
 		EncheVetor(primo,x);
 		ContaPrimo(primo,x,&c);
-		printf("Numero de primos: %d\n\nPrimos: \n",c);
 		c--;
 		for (y=0;y<=c;y++)
           printf("%d\n",primo[y]);
+        printf("\nNumero de primos: %d\n\n",(c+1));
+        free(primo);
 	    printf("\n\nDeseja fazer outra operacao? (s=1/n=0): "); scanf("%d",&opt);
 	    Escolha2(opt);
 		break;
