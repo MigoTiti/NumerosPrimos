@@ -56,13 +56,11 @@ void Escolha(int op){
 		printf("\nDigite um numero natural: "); scanf("%d",&x);
 		system("cls");
 		primo=(int *) malloc(x * (sizeof(int)));
-		x--;
 		EncheVetor(primo,x);
 		ContaPrimo(primo,x,&c);
-		c--;
-		for (y=0;y<=c;y++)
+		for (y=0;y<=(c-1);y++)
           printf("%d\n",primo[y]);
-        printf("\nNumero de primos: %d\n\n",(c+1));
+        printf("\nNumero de primos: %d\n\n",c);
         free(primo);
 	    printf("\n\nDeseja fazer outra operacao? (s=1/n=0): "); scanf("%d",&opt);
 	    Escolha2(opt);
@@ -85,7 +83,7 @@ void Escolha2(int opt){
 
 void EncheVetor(int *primo, int c){
 	int y, x=1;
-	for (y=0;y<=c;y++){
+	for (y=0;y<=(c-1);y++){
 		primo[y]=x;
 		x++;
 	}
