@@ -1,11 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Primo(int x);
-void PrimoRef(int x, int *cont);
+//Menus
+int menu(void);
 void Escolha(int op);
 void Escolha2(int opt);
-int menu(void);
+
+
+//Enunciado 1
+void Primo(int x);
+
+//Enunciado 2
+void PrimoRef(int x, int *cont);
+
+//Enunciado 3
 void EncheVetor(int *primo, int c);
 void ContaPrimo(int *primo, int x, int *c);
 
@@ -29,7 +37,7 @@ int menu(void){
 }
 
 void Escolha(int op){	
-    int x, y, c, opt, cont=0, *primo;
+    int x, y, c, opt, cont, *primo;
 	switch(op){
 	case 1:
 	    printf("\nDigite um numero natural: "); scanf("%d",&x);
@@ -69,7 +77,7 @@ void Escolha(int op){
 		exit(0);
 	default:
 		system("cls");
-		printf("Comando invalido. \n");
+		printf("\nComando invalido.\n\n");
 }
 }
 
@@ -90,7 +98,7 @@ void EncheVetor(int *primo, int c){
 }
 
 void ContaPrimo(int *primo, int x, int *c){
-	int y, z=0, a=0, cont=0;
+	int y, z=0, a=0, cont;
 	do{
 	x--;
 		a++;
